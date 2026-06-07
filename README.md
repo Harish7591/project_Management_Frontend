@@ -2,9 +2,7 @@
 
 ## Overview
 
-This is the frontend application for the Project Management System. It provides an intuitive user interface for administrators and developers to manage projects and tasks.
-
----
+Frontend application for the Project Management System built using React and Vite.
 
 ## Tech Stack
 
@@ -14,41 +12,6 @@ This is the frontend application for the Project Management System. It provides 
 * Axios
 * Context API
 * CSS
-
----
-
-## Features
-
-### Authentication
-
-* Admin Login
-* Developer Login
-* Protected Routes
-
-### Dashboard
-
-* Project Overview
-* Developer Overview
-* Task Overview
-
-### Project Management
-
-* Create Projects
-* View Projects
-* Manage Project Details
-
-### Developer Management
-
-* Add Developers
-* View Developers
-* Manage Developer Information
-
-### Task Management
-
-* Create Tasks
-* Assign Tasks
-* Update Task Status
-* View Assigned Tasks
 
 ---
 
@@ -72,28 +35,18 @@ cd project-management-frontend
 npm install
 ```
 
+### Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
 ### Start Development Server
 
 ```bash
 npm run dev
-```
-
-Frontend application will start on the local development server.
-
----
-
-## Project Structure
-
-```text
-src/
-├── api/
-├── assets/
-├── components/
-├── context/
-├── pages/
-├── routes/
-├── styles/
-└── utils/
 ```
 
 ---
@@ -105,8 +58,6 @@ src/
 * Projects
 * Developers
 * Tasks
-
----
 
 ## Author
 
