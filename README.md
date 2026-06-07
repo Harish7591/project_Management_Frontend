@@ -1,14 +1,12 @@
-# Project Management System
+# Project Management System - Frontend
 
 ## Overview
 
-Project Management System is a full-stack web application used to manage projects, developers, and tasks efficiently. The system allows administrators to create and manage projects, assign tasks to developers, and track project progress through a centralized dashboard.
+This is the frontend application for the Project Management System. It provides an intuitive user interface for administrators and developers to manage projects and tasks.
 
 ---
 
 ## Tech Stack
-
-### Frontend
 
 * React.js
 * Vite
@@ -16,24 +14,6 @@ Project Management System is a full-stack web application used to manage project
 * Axios
 * Context API
 * CSS
-
-### Backend
-
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT Authentication
-* bcrypt
-
-### Database
-
-* MongoDB Atlas
-
-### Version Control
-
-* Git
-* GitHub
 
 ---
 
@@ -44,7 +24,12 @@ Project Management System is a full-stack web application used to manage project
 * Admin Login
 * Developer Login
 * Protected Routes
-* JWT Authentication
+
+### Dashboard
+
+* Project Overview
+* Developer Overview
+* Task Overview
 
 ### Project Management
 
@@ -56,129 +41,73 @@ Project Management System is a full-stack web application used to manage project
 
 * Add Developers
 * View Developers
-* Assign Developers to Projects
+* Manage Developer Information
 
 ### Task Management
 
 * Create Tasks
-* Assign Tasks to Developers
+* Assign Tasks
 * Update Task Status
 * View Assigned Tasks
 
-### Dashboard
-
-* Project Overview
-* Developer Overview
-* Task Tracking
-
 ---
 
-# Backend Setup
+## Installation
 
-### 1. Navigate to Backend Project
-
-```bash
-cd project-management-backend
-```
-
-### 2. Install Dependencies
+### Clone Repository
 
 ```bash
-npm install
+git clone https://github.com/Harish7591/project_Management_Frontend.git
 ```
 
-### 3. Create Initial Admin User
-
-Before starting the backend server, create the admin account:
-
-```bash
-node createAdmin.js
-```
-
-### 4. Start Backend Server
-
-```bash
-npm run dev
-```
-
-Backend server will start successfully after admin creation.
-
----
-
-# Frontend Setup
-
-### 1. Navigate to Frontend Project
+### Navigate to Project
 
 ```bash
 cd project-management-frontend
 ```
 
-### 2. Install Dependencies
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Start Frontend
+### Start Development Server
 
 ```bash
 npm run dev
 ```
 
-Frontend application will run on the local development server.
+Frontend application will start on the local development server.
 
 ---
 
-## Database
+## Project Structure
 
-MongoDB Atlas is used as the cloud database for storing:
+```text
+src/
+├── api/
+├── assets/
+├── components/
+├── context/
+├── pages/
+├── routes/
+├── styles/
+└── utils/
+```
 
-* Admin Information
-* Developers
+---
+
+## Main Modules
+
+* Authentication
+* Dashboard
 * Projects
+* Developers
 * Tasks
-
----
-
-## Project Modules
-
-### Admin Module
-
-* Manage Projects
-* Manage Developers
-* Assign Tasks
-* Track Progress
-
-### Developer Module
-
-* Login
-* View Assigned Tasks
-* Update Task Status
-
-### Task Module
-
-* Task Creation
-* Task Assignment
-* Status Tracking
-
----
-
-## Repositories
-
-### Backend Repository
-
-https://github.com/Harish7591/project_Management
-
-### Frontend Repository
-
-https://github.com/Harish7591/project_Management_Frontend
 
 ---
 
 ## Author
 
 Harish Kumar
-
-Full Stack Developer
-
-Node.js | Express.js | MongoDB | React.js
