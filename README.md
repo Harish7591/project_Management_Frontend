@@ -50,6 +50,13 @@ npm run dev
 ```
 
 ---
+## Admin Login
+* email - admin@gmail.com
+* Password - Admin@123
+
+## Developer Login
+* email - harish@gmail.com
+* Password - 123456
 
 ## Main Modules
 
