@@ -76,3 +76,294 @@
 .login-btn:hover {
   background: #4f46e5;
 }
+
+/* Landing Page */
+
+.landing-container {
+  height: 100vh;
+  display: flex;
+  background: #f8fafc;
+}
+
+.landing-left {
+  width: 50%;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landing-left h1 {
+  font-size: 52px;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.landing-left p {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-admin,
+.btn-dev {
+  padding: 14px 28px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.btn-admin {
+  background: #4f46e5;
+}
+
+.btn-dev {
+  background: #2563eb;
+}
+
+.landing-right {
+  width: 50%;
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #7c3aed
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview-card {
+  width: 420px;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.stats h3 {
+  color: #4f46e5;
+  font-size: 30px;
+}
+
+/* ---------- Landing Page ---------- */
+
+.landing-container {
+  height: 100vh;
+  display: flex;
+}
+
+.landing-left {
+  width: 50%;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+}
+
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.landing-left h1 {
+  font-size: 60px;
+  line-height: 1.1;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.landing-left p {
+  font-size: 18px;
+  color: #6b7280;
+  line-height: 1.8;
+  max-width: 550px;
+  margin-bottom: 40px;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-admin,
+.btn-dev {
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-admin {
+  background: #4f46e5;
+}
+
+.btn-admin:hover {
+  background: #4338ca;
+}
+
+.btn-dev {
+  background: #2563eb;
+}
+
+.btn-dev:hover {
+  background: #1d4ed8;
+}
+
+.landing-right {
+  width: 50%;
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #7c3aed
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-card {
+  width: 450px;
+  background: white;
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.feature-card h2 {
+  color: #111827;
+  margin-bottom: 30px;
+}
+
+.feature-item {
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  font-weight: 600;
+  color: #374151;
+}
+/* Developer Login */
+
+.developer-login-container{
+  display:flex;
+  min-height:100vh;
+}
+
+.developer-left{
+  width:50%;
+  background:linear-gradient(
+    135deg,
+    #0f172a,
+    #1e293b
+  );
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px;
+}
+
+.dev-logo{
+  width:90px;
+  height:90px;
+  border-radius:20px;
+  background:#4f46e5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  margin-bottom:30px;
+}
+
+.developer-left h1{
+  font-size:55px;
+  margin-bottom:20px;
+}
+
+.developer-left p{
+  font-size:18px;
+  color:#cbd5e1;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+.dev-features{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  font-size:18px;
+}
+
+.developer-right{
+  width:50%;
+  background:#f8fafc;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.developer-card{
+  width:420px;
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.08);
+}
+
+.developer-card h2{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.developer-card p{
+  text-align:center;
+  color:#6b7280;
+  margin-bottom:25px;
+}
+
+@media(max-width:768px){
+
+  .developer-login-container{
+    flex-direction:column;
+  }
+
+  .developer-left,
+  .developer-right{
+    width:100%;
+  }
+
+  .developer-left{
+    padding:40px;
+  }
+
+}

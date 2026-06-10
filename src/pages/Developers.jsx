@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-
+import "../styles/admin.css";
 import {
   getDevelopers,
   createDeveloper,
@@ -100,116 +100,101 @@ const Developers = () => {
 
   return (
     <>
-      <Navbar />
+  <Navbar />
 
-      <div style={{ padding: "20px" }}>
-        <h1>Developers</h1>
+  <div className="page-container">
+    <h1 className="page-title">
+      Developers Management
+    </h1>
 
-        <div
-          style={{
-            border: "1px solid black",
-            padding: "15px",
-            marginBottom: "20px",
-          }}
+    <div className="form-card">
+      <h2>
+        {editingId
+          ? "Update Developer"
+          : "Create Developer"}
+      </h2>
+
+      <div className="form-grid">
+        <input
+          className="form-input"
+          type="text"
+          name="name"
+          placeholder="Developer Name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+
+        <input
+          className="form-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+
+        <input
+          className="form-input"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+      </div>
+
+      <br />
+
+      <button
+        className="primary-btn"
+        onClick={handleSubmit}
+      >
+        {editingId
+          ? "Update Developer"
+          : "Create Developer"}
+      </button>
+
+      {editingId && (
+        <button
+          className="cancel-btn"
+          onClick={resetForm}
         >
-          <h2>
-            {editingId
-              ? "Update Developer"
-              : "Create Developer"}
-          </h2>
+          Cancel
+        </button>
+      )}
+    </div>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+    <div className="data-grid">
+      {developers.map((dev) => (
+        <div key={dev._id} className="data-card">
+          <h3>{dev.name}</h3>
 
-          <br />
-          <br />
+          <p>{dev.email}</p>
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+          <p>{dev.role}</p>
 
-          <br />
-          <br />
-
-          <input
-            type="password"
-            name="password"
-            placeholder={
-              editingId
-                ? "New Password"
-                : "Password"
-            }
-            value={formData.password}
-            onChange={handleChange}
-          />
-
-          <br />
-          <br />
-
-          <button onClick={handleSubmit}>
-            {editingId
-              ? "Update Developer"
-              : "Create Developer"}
-          </button>
-
-          {editingId && (
+          <div className="action-buttons">
             <button
-              onClick={resetForm}
-              style={{
-                marginLeft: "10px",
-              }}
-            >
-              Cancel
-            </button>
-          )}
-        </div>
-
-        {developers.map((dev) => (
-          <div
-            key={dev._id}
-            style={{
-              border: "1px solid black",
-              padding: "10px",
-              marginBottom: "10px",
-            }}
-          >
-            <h3>{dev.name}</h3>
-
-            <p>{dev.email}</p>
-
-            <p>{dev.role}</p>
-
-            <button
-              onClick={() =>
-                handleEdit(dev)
-              }
+              className="edit-btn"
+              onClick={() => handleEdit(dev)}
             >
               Edit
             </button>
 
             <button
+              className="delete-btn"
               onClick={() =>
                 handleDelete(dev._id)
               }
-              style={{
-                marginLeft: "10px",
-              }}
             >
               Delete
             </button>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
+  </div>
+</>
   );
 };
 

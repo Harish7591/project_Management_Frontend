@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../api/authApi";
+import "../styles/login.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,38 +46,49 @@ const Login = () => {
   };
 
   return (
-    <div style={{ padding: "50px" }}>
-      <h2>Admin Login</h2>
+  <div className="login-container">
+    <div className="login-card">
+
+      <div className="logo-circle">
+        P
+      </div>
+
+      <div className="login-title">
+        <h1>Admin Login</h1>
+        <p>
+          Sign in to manage projects
+          and developers
+        </p>
+      </div>
 
       <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-          />
-        </div>
+        <input
+          className="login-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+        />
 
-        <br />
+        <input
+          className="login-input"
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
 
-        <div>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-          />
-        </div>
-
-        <br />
-
-        <button type="submit">
+        <button
+          type="submit"
+          className="login-btn"
+        >
           Login
         </button>
       </form>
+
     </div>
-  );
+  </div>
+);
 };
 
 export default Login;

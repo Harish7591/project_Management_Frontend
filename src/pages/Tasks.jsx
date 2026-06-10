@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-
+import "../styles/admin.css";
 import {
   getTasks,
   createTask,
@@ -135,13 +135,24 @@ const Tasks = () => {
 
   return (
     <>
-      <Navbar />
+  <Navbar />
 
-      <div style={{ padding: "20px" }}>
-        <h1>Tasks</h1>
+  <div className="page-container">
+    <h1 className="page-title">
+      Tasks Management
+    </h1>
 
-        <form onSubmit={handleSubmit}>
+    <div className="form-card">
+      <h2>
+        {editingId
+          ? "Update Task"
+          : "Create Task"}
+      </h2>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-grid">
           <input
+            className="form-input"
             type="text"
             name="title"
             placeholder="Task Title"
@@ -149,20 +160,19 @@ const Tasks = () => {
             onChange={handleChange}
           />
 
-          <br />
-          <br />
-
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
+          <select
+            className="form-select"
+            name="priority"
+            value={formData.priority}
             onChange={handleChange}
-          />
-
-          <br />
-          <br />
+          >
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
 
           <select
+            className="form-select"
             name="projectId"
             value={formData.projectId}
             onChange={handleChange}
@@ -181,12 +191,12 @@ const Tasks = () => {
             ))}
           </select>
 
-          <br />
-          <br />
-
           <select
+            className="form-select"
             name="assignedDeveloper"
-            value={formData.assignedDeveloper}
+            value={
+              formData.assignedDeveloper
+            }
             onChange={handleChange}
           >
             <option value="">
@@ -203,100 +213,75 @@ const Tasks = () => {
             ))}
           </select>
 
-          <br />
-          <br />
-
-          <select
-            name="priority"
-            value={formData.priority}
-            onChange={handleChange}
-          >
-            <option value="Low">Low</option>
-            <option value="Medium">
-              Medium
-            </option>
-            <option value="High">
-              High
-            </option>
-          </select>
-
-          <br />
-          <br />
-
           <input
+            className="form-input"
             type="date"
             name="dueDate"
             value={formData.dueDate}
             onChange={handleChange}
           />
+        </div>
 
-          <br />
-          <br />
+        <br />
 
-          <button type="submit">
-            {editingId
-              ? "Update Task"
-              : "Create Task"}
-          </button>
-        </form>
+        <textarea
+          className="form-textarea"
+          name="description"
+          placeholder="Task Description"
+          value={formData.description}
+          onChange={handleChange}
+        />
 
-        <hr />
+        <br />
 
-        <h2>Task List</h2>
+        <button
+          className="primary-btn"
+          type="submit"
+        >
+          {editingId
+            ? "Update Task"
+            : "Create Task"}
+        </button>
+      </form>
+    </div>
 
-        {tasks.map((task) => (
-          <div
-            key={task._id}
-            style={{
-              border: "1px solid black",
-              padding: "10px",
-              marginBottom: "10px",
-            }}
-          >
-            <h3>{task.title}</h3>
+    <div className="data-grid">
+      {tasks.map((task) => (
+        <div key={task._id} className="data-card">
+          <h3>{task.title}</h3>
 
-            <p>{task.description}</p>
+          <p>{task.description}</p>
 
-            <p>
-              Project:{" "}
-              {
-                task.projectId
-                  ?.projectName
-              }
-            </p>
+          <p>
+            <strong>Project:</strong>{" "}
+            {task.projectId?.projectName}
+          </p>
 
-            <p>
-              Developer:{" "}
-              {
-                task
-                  .assignedDeveloper
-                  ?.name
-              }
-            </p>
+          <p>
+            <strong>Developer:</strong>{" "}
+            {task.assignedDeveloper?.name}
+          </p>
 
-            <p>
-              Priority:
-              {" "}
-              {task.priority}
-            </p>
+          <p>
+            <strong>Priority:</strong>{" "}
+            {task.priority}
+          </p>
 
-            <p>
-              Status:
-              {" "}
-              {task.status}
-            </p>
+          <p>
+            <strong>Status:</strong>{" "}
+            {task.status}
+          </p>
 
+          <div className="action-buttons">
             <button
-              onClick={() =>
-                handleEdit(task)
-              }
+              className="edit-btn"
+              onClick={() => handleEdit(task)}
             >
               Edit
             </button>
 
-            {" "}
-
             <button
+              className="delete-btn"
               onClick={() =>
                 handleDelete(task._id)
               }
@@ -304,9 +289,11 @@ const Tasks = () => {
               Delete
             </button>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
+  </div>
+</>
   );
 };
 

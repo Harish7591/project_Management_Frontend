@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { developerLogin } from "../api/developerApi";
+import "../styles/login.css";
 
 const DeveloperLogin = () => {
   const navigate = useNavigate();
@@ -33,8 +34,6 @@ const DeveloperLogin = () => {
         "developer"
       );
 
-      alert("Developer Login Success");
-
       navigate("/my-tasks");
     } catch (error) {
       console.log(error);
@@ -43,34 +42,72 @@ const DeveloperLogin = () => {
   };
 
   return (
-    <div>
-      <h1>Developer Login</h1>
+    <div className="developer-login-container">
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-        />
+      <div className="developer-left">
 
-        <br />
-        <br />
+        <div className="dev-logo">
+          👨‍💻
+        </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-        />
+        <h1>Developer Portal</h1>
 
-        <br />
-        <br />
+        <p>
+          Access your assigned projects,
+          track tasks, update progress,
+          and collaborate with your team.
+        </p>
 
-        <button type="submit">
-          Login
-        </button>
-      </form>
+        <div className="dev-features">
+          <div>✓ View Assigned Tasks</div>
+          <div>✓ Update Task Status</div>
+          <div>✓ Project Tracking</div>
+          <div>✓ Team Collaboration</div>
+        </div>
+
+      </div>
+
+      <div className="developer-right">
+
+        <div className="developer-card">
+
+          <h2>Developer Login</h2>
+
+          <p>
+            Sign in to continue
+          </p>
+
+          <form onSubmit={handleSubmit}>
+
+            <input
+              className="login-input"
+              type="email"
+              name="email"
+              placeholder="Developer Email"
+              onChange={handleChange}
+            />
+
+            <input
+              className="login-input"
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+            />
+
+            <button
+              className="login-btn"
+              type="submit"
+            >
+              Login
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+
     </div>
   );
 };

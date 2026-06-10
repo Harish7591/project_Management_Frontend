@@ -4,8 +4,15 @@ import {
   updateTaskStatus,
 } from "../api/developerApi";
 
+import DeveloperSidebar from "../components/DeveloperSidebar";
+import "../styles/developer.css";
+
 const MyTasks = () => {
   const [tasks, setTasks] = useState([]);
+
+  const developerName =
+    localStorage.getItem("developerName") ||
+    "Developer";
 
   const fetchTasks = async () => {
     try {
@@ -52,71 +59,144 @@ const MyTasks = () => {
     }
   };
 
+  const completedTasks = tasks.filter(
+    (task) => task.status === "Completed"
+  ).length;
+
+  const inProgressTasks = tasks.filter(
+    (task) => task.status === "In Progress"
+  ).length;
+
   return (
-    <div>
-      <h1>My Tasks</h1>
+    <>
+      <DeveloperSidebar />
 
-      {tasks.map((task) => (
-        <div
-          key={task._id}
-          style={{
-            border: "1px solid black",
-            padding: "10px",
-            marginBottom: "10px",
-          }}
-        >
-          <h3>{task.title}</h3>
+      <div className="developer-container">
 
-          <p>{task.description}</p>
+        <div className="developer-header">
+          <h1>
+            Welcome Back, {developerName} 👨‍💻
+          </h1>
 
           <p>
-            <strong>Priority :</strong>{" "}
-            {task.priority}
+            Manage and update your assigned
+            tasks efficiently.
           </p>
-
-          <p>
-            <strong>Status :</strong>{" "}
-            {task.status}
-          </p>
-
-          <select
-            value={task.status}
-            onChange={(e) =>
-              handleStatusChange(
-                task._id,
-                e.target.value
-              )
-            }
-          >
-            <option value="Pending">
-              Pending
-            </option>
-
-            <option value="In Progress">
-              In Progress
-            </option>
-
-            <option value="Completed">
-              Completed
-            </option>
-          </select>
-
-          <button
-            style={{
-              marginLeft: "10px",
-            }}
-            onClick={() =>
-              submitStatus(
-                task._id,
-                task.status
-              )
-            }
-          >
-            Submit
-          </button>
         </div>
-      ))}
-    </div>
+
+        <div className="developer-stats">
+
+          <div className="developer-stat-card assigned">
+            <h2>{tasks.length}</h2>
+            <p>Assigned Tasks</p>
+          </div>
+
+          <div className="developer-stat-card progress">
+            <h2>{inProgressTasks}</h2>
+            <p>In Progress</p>
+          </div>
+
+          <div className="developer-stat-card completed">
+            <h2>{completedTasks}</h2>
+            <p>Completed</p>
+          </div>
+
+        </div>
+
+        <div className="task-board">
+          <h2>📋 My Tasks</h2>
+
+          {tasks.length === 0 ? (
+            <div className="empty-task">
+              No tasks assigned yet.
+            </div>
+          ) : (
+            tasks.map((task) => (
+              <div
+                className="task-card"
+                key={task._id}
+              >
+                <div className="task-header">
+
+                  <div>
+                    <h3>{task.title}</h3>
+
+                    <p className="task-desc">
+                      {task.description}
+                    </p>
+
+                    {task.projectId && (
+                      <p className="task-project">
+                        Project:
+                        {" "}
+                        {task.projectId
+                          ?.projectName ||
+                          "N/A"}
+                      </p>
+                    )}
+
+                    {task.dueDate && (
+                      <p className="task-date">
+                        Due:
+                        {" "}
+                        {new Date(
+                          task.dueDate
+                        ).toLocaleDateString()}
+                      </p>
+                    )}
+                  </div>
+
+                  <span
+                    className={`priority-badge ${task.priority}`}
+                  >
+                    {task.priority}
+                  </span>
+
+                </div>
+
+                <div className="task-actions">
+
+                  <select
+                    value={task.status}
+                    onChange={(e) =>
+                      handleStatusChange(
+                        task._id,
+                        e.target.value
+                      )
+                    }
+                  >
+                    <option value="Pending">
+                      Pending
+                    </option>
+
+                    <option value="In Progress">
+                      In Progress
+                    </option>
+
+                    <option value="Completed">
+                      Completed
+                    </option>
+                  </select>
+
+                  <button
+                    onClick={() =>
+                      submitStatus(
+                        task._id,
+                        task.status
+                      )
+                    }
+                  >
+                    Update
+                  </button>
+
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+      </div>
+    </>
   );
 };
 

@@ -6,6 +6,7 @@ import {
   updateProject,
   deleteProject,
 } from "../api/projectApi";
+import "../styles/admin.css";
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
@@ -98,13 +99,20 @@ const Projects = () => {
 
   return (
     <>
-      <Navbar />
+  <Navbar />
 
-      <div style={{ padding: "20px" }}>
-        <h1>Projects</h1>
+  <div className="page-container">
+    <h1 className="page-title">Projects Management</h1>
 
-        <form onSubmit={handleSubmit}>
+    <div className="form-card">
+      <h2>
+        {editingId ? "Update Project" : "Create Project"}
+      </h2>
+
+      <form onSubmit={handleSubmit}>
+        <div className="form-grid">
           <input
+            className="form-input"
             type="text"
             name="projectName"
             placeholder="Project Name"
@@ -112,40 +120,8 @@ const Projects = () => {
             onChange={handleChange}
           />
 
-          <br />
-          <br />
-
-          <textarea
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-
-          <br />
-          <br />
-
-          <input
-            type="date"
-            name="startDate"
-            value={formData.startDate}
-            onChange={handleChange}
-          />
-
-          <br />
-          <br />
-
-          <input
-            type="date"
-            name="endDate"
-            value={formData.endDate}
-            onChange={handleChange}
-          />
-
-          <br />
-          <br />
-
           <select
+            className="form-select"
             name="status"
             value={formData.status}
             onChange={handleChange}
@@ -155,56 +131,72 @@ const Projects = () => {
             <option>On Hold</option>
           </select>
 
-          <br />
-          <br />
+          <input
+            className="form-input"
+            type="date"
+            name="startDate"
+            value={formData.startDate}
+            onChange={handleChange}
+          />
 
-          <button type="submit">
-            {editingId
-              ? "Update Project"
-              : "Create Project"}
-          </button>
-        </form>
+          <input
+            className="form-input"
+            type="date"
+            name="endDate"
+            value={formData.endDate}
+            onChange={handleChange}
+          />
+        </div>
 
-        <hr />
+        <br />
 
-        <h2>Project List</h2>
+        <textarea
+          className="form-textarea"
+          name="description"
+          placeholder="Project Description"
+          value={formData.description}
+          onChange={handleChange}
+        />
 
-        {projects.map((project) => (
-          <div
-            key={project._id}
-            style={{
-              border: "1px solid black",
-              margin: "10px",
-              padding: "10px",
-            }}
-          >
-            <h3>{project.projectName}</h3>
+        <br />
 
-            <p>{project.description}</p>
+        <button className="primary-btn" type="submit">
+          {editingId ? "Update Project" : "Create Project"}
+        </button>
+      </form>
+    </div>
 
-            <p>Status: {project.status}</p>
+    <div className="data-grid">
+      {projects.map((project) => (
+        <div key={project._id} className="data-card">
+          <h3>{project.projectName}</h3>
 
+          <p>{project.description}</p>
+
+          <p>
+            <strong>Status:</strong> {project.status}
+          </p>
+
+          <div className="action-buttons">
             <button
-              onClick={() =>
-                handleEdit(project)
-              }
+              className="edit-btn"
+              onClick={() => handleEdit(project)}
             >
               Edit
             </button>
 
-            {" "}
-
             <button
-              onClick={() =>
-                handleDelete(project._id)
-              }
+              className="delete-btn"
+              onClick={() => handleDelete(project._id)}
             >
               Delete
             </button>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
+  </div>
+</>
   );
 };
 
